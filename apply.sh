@@ -1,19 +1,26 @@
 #!/bin/bash
 
-platform=$OSTYPE
-theme_name=$1
-terminal_name=$2
-img_path=$(cd ~/.gvcci/themes/$theme_name; pwd)/$(ls ~/.gvcci/themes/"$theme_name"/ | grep wallpaper)
+if [ $# -ne 2 ]; then
+    # ls ~/.gvcci/themes
+    echo "Usage: apply.sh [theme] [terminal]"
+    echo "currently only macOS and iTerm are supported"
+    echo "to use it with iTerm, pass 'iterm' as the [terminal] param"
+else
+    platform=$OSTYPE
+    theme_name=$1
+    terminal_name=$2
+    img_path=$(cd ~/.gvcci/themes/$theme_name; pwd)/$(ls ~/.gvcci/themes/"$theme_name"/ | grep wallpaper)
 
-current_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+    current_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-case $platform in
-    darwin*)
-        $current_dir/wallpaper/macOS.sh $img_path
-        ;;
-    *)
-        echo "Could not find script to apply wallpaper to platform $platform"
-        ;;
-esac
+    case $platform in
+        darwin*)
+            $current_dir/wallpaper/macOS.sh $img_path
+            ;;
+        *)
+            echo "Could not find script to apply wallpaper to platform $platform"
+            ;;
+    esac
 
-$current_dir/terminal/"$terminal_name".sh $theme_name
+    $current_dir/terminal/"$terminal_name".sh $theme_name
+fi
