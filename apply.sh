@@ -1,10 +1,12 @@
 #!/bin/bash
 
 if [ $# -ne 2 ]; then
-    # ls ~/.gvcci/themes
     echo "Usage: apply.sh [theme] [terminal]"
     echo "currently only macOS and iTerm are supported"
     echo "to use it with iTerm, pass 'iterm' as the [terminal] param"
+    echo "============================================================"
+    echo "Available themes:"
+    ls ~/.gvcci/themes
 else
     platform=$OSTYPE
     theme_name="$1"
@@ -15,7 +17,7 @@ else
 
     case $platform in
         darwin*)
-            $current_dir/wallpaper/macOS.sh $img_path
+            $current_dir/wallpaper/darwin.sh $img_path
             ;;
         *)
             echo "Could not find script to apply wallpaper to platform $platform"
