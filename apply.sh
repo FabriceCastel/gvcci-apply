@@ -7,9 +7,9 @@ if [ $# -ne 2 ]; then
     echo "to use it with iTerm, pass 'iterm' as the [terminal] param"
 else
     platform=$OSTYPE
-    theme_name=$1
-    terminal_name=$2
-    img_path=$(cd ~/.gvcci/themes/$theme_name; pwd)/$(ls ~/.gvcci/themes/"$theme_name"/ | grep wallpaper)
+    theme_name="$1"
+    terminal_name="$2"
+    img_path=$(cd ~/.gvcci/themes/"$theme_name"; pwd)/$(ls ~/.gvcci/themes/"$theme_name"/ | grep wallpaper)
 
     current_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
