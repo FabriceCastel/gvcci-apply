@@ -11,7 +11,7 @@ else
     platform=$OSTYPE
     theme_name="$1"
     terminal_name="$2"
-    img_path=$(cd ~/.gvcci/themes/"$theme_name"; pwd)/$(ls ~/.gvcci/themes/"$theme_name"/ | grep wallpaper)
+    img_path=$(cd "$HOME/.gvcci/themes/$theme_name"; pwd)/$(ls "$HOME/.gvcci/themes/$theme_name"/ | grep wallpaper)
 
     current_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
